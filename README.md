@@ -5,7 +5,7 @@ In JavaScript there is not always a one-to-one relationship between string chara
 For example, emoji characters like "🌷","🎁","💩","😜" and "👍" are represented by two JavaScript characters each (high surrogate and low surrogate). That is,
 
 ```javascript
-"🌷".length == 2
+"🌷".length == 
 ```
 The combined emoji are even longer:
 ```javascript

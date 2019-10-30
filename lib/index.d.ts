@@ -1,4 +1,5 @@
 export declare class GraphemeSplitter {
+    prevBreak(string: string, index: number): number;
     /**
      * Returns the next grapheme break in the string after the given index
      * @param string {string}

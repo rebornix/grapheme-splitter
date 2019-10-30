@@ -58,6 +58,39 @@ test('splitGraphemes returns properly split list from string', t => {
   t.end();
 });
 
+
+// ---------------------------------------------------------------------------
+// Test cases
+// ---------------------------------------------------------------------------
+test('prevBreak', t => {
+  const splitter = new GraphemeSplitter();
+
+  t.plan(testData.length);
+
+  const splitGraphemes2 = function (str) {
+    let res = [];
+    let index = str.length;
+    let brk;
+    while ((brk = splitter.prevBreak(str, index)) > 0) {
+      res.push(str.slice(brk, index));
+      index = brk;
+    }
+    if (index > 0) {
+      res.push(str.slice(0, index));
+    }
+    return res.reverse();
+  }
+
+  testData.forEach( ({ input, expected }) => {
+    const result = splitter.splitGraphemes(input);
+    const result2 = splitGraphemes2(input);
+
+    t.deepLooseEqual(result, result2);
+  });
+
+  t.end();
+});
+
 // test('iterateGraphemes returns properly split iterator from string', t => {
 //   const splitter = new GraphemeSplitter();
 
